@@ -71,7 +71,7 @@ Disassembly of section .init:
 ## Extract an image
 
 Extract an image using `cargo objcopy`. This will generate a binary file `app.bin` in the root of the crate. It is
-not useful by itself, but will need to be run on a compatible emulator.
+not useful by itself, but will need to be run on [a compatible emulator](https://github.com/badlydrawnrod/arviss_experiment).
 
 - Extract an image
 
@@ -79,4 +79,5 @@ not useful by itself, but will need to be run on a compatible emulator.
 $ cargo objcopy --release -- -O binary app.bin
 ```
 
-Eventually the simulator may also support loading ELF much like [C-Arviss](https://github.com/badlydrawnrod/arviss)does.
+Eventually the simulator may also support loading ELF much like [C-Arviss](https://github.com/badlydrawnrod/arviss)
+does.
