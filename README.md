@@ -49,11 +49,11 @@ Disassembly of section .init:
 
 00000014 <.Lpcrel_hi2>:
       14: 17 45 00 00   auipc   a0, 4
-      18: 13 05 c5 fe   addi    a0, a0, -20
+      18: 13 05 05 ff   addi    a0, a0, -16
 
 0000001c <.Lpcrel_hi3>:
       1c: 97 45 00 00   auipc   a1, 4
-      20: 93 85 45 fe   addi    a1, a1, -28
+      20: 93 85 85 fe   addi    a1, a1, -24
       24: 13 06 00 00   li      a2, 0
 
 00000028 <clear_bss>:
@@ -63,9 +63,29 @@ Disassembly of section .init:
       34: e3 0a 00 fe   beqz    zero, 0x28 <clear_bss>
 
 00000038 <finish_bss>:
-      38: 97 00 00 00   auipc   ra, 0
-      3c: e7 80 c0 00   jalr    12(ra)
-      40: 73 00 10 00   ebreak
+      38: 17 45 00 00   auipc   a0, 4
+      3c: 13 05 85 fc   addi    a0, a0, -56
+
+00000040 <.Lpcrel_hi5>:
+      40: 97 45 00 00   auipc   a1, 4
+      44: 93 85 45 fc   addi    a1, a1, -60
+
+00000048 <.Lpcrel_hi6>:
+      48: 17 06 00 00   auipc   a2, 0
+      4c: 13 06 06 26   addi    a2, a2, 608
+
+00000050 <copy_data>:
+      50: 63 7c b5 00   bgeu    a0, a1, 0x68 <finish_copy>
+      54: 83 02 06 00   lb      t0, 0(a2)
+      58: 23 00 55 00   sb      t0, 0(a0)
+      5c: 13 05 15 00   addi    a0, a0, 1
+      60: 13 06 16 00   addi    a2, a2, 1
+      64: e3 06 00 fe   beqz    zero, 0x50 <copy_data>
+
+00000068 <finish_copy>:
+      68: 97 00 00 00   auipc   ra, 0
+      6c: e7 80 c0 00   jalr    12(ra)
+      70: 73 00 10 00   ebreak
 ```
 
 ## Extract an image
