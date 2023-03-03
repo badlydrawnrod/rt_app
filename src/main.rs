@@ -11,7 +11,11 @@ static mut DATA: u32 = 10;
 #[no_mangle]
 pub fn main() {
     // Demonstrate that the static data has in fact been initialised as expected.
-    let count = unsafe { DATA };
+    // Note the use of ptr::read_volatile() to prevent the compiler from optimising it away.
+    let count = unsafe { 
+        let p = &DATA as *const u32;
+        ptr::read_volatile(p)
+    };
 
     let tty_status = 0x8000 as *mut u8;
     let tty_data = 0x8001 as *mut u8;

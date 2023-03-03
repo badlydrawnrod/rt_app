@@ -75,8 +75,10 @@ not useful by itself, but will need to be run on [a compatible emulator](https:/
 
 - Extract an image
 
+This extracts just the required sections to make the extracted image very small.
+
 ```
-$ cargo objcopy --release -- -O binary app.bin
+$ cargo objcopy --release -- -O binary app.bin -j .init -j .text -j .rodata -j .data
 ```
 
 Eventually the simulator may also support loading ELF much like [C-Arviss](https://github.com/badlydrawnrod/arviss)
