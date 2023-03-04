@@ -5,4 +5,4 @@ target = "riscv32i-unknown-none-elf"
 
 [target.riscv32i-unknown-none-elf]
 runner = "llvm-objdump -d"      # A wrapper to run executables. Or in this case, disassemble them.
-rustflags = ["-C", "link-arg=-Tminimal.no_loader.ld"]
+rustflags = ["-C", "link-arg=-Tminimal.ld"]
